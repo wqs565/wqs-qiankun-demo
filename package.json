@@ -1,0 +1,22 @@
+{
+  "name": "wqs-qiankun-demo",
+  "license": "MIT",
+  "version": "0.0.1",
+  "scripts": {
+    "install:all": "yarn install:master && yarn install:a && yarn install:b",
+    "install:master": "cd master-project && yarn",
+    "install:a": "cd a-project && yarn",
+    "install:b": "cd b-project && yarn",
+    "build:all": "concurrently \"yarn build:master\" \"yarn build:a\" \"yarn build:b\"",
+    "build:master": "cd master-project && yarn build",
+    "build:a": "cd a-project && yarn build",
+    "build:b": "cd b-project && yarn build",
+    "serve:all": "concurrently \"yarn serve:master\" \"yarn serve:a\" \"yarn serve:b\"",
+    "serve:master": "cd master-project && yarn serve",
+    "serve:a": "cd a-project && yarn serve",
+    "serve:b": "cd b-project && yarn serve"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
