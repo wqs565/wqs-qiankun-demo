@@ -88,7 +88,36 @@ module.exports = {
 
 #### 通信相关
 
-1. 主应用
+1. 主应用(/src/plugins/shared/actions.js)
+```javascript
+// 初始化数据
+import { initGlobalState, MicroAppStateActions } from 'qiankun'
+const initialState = {
+  msg: '', // 通用消息名称
+  data: null // 通用消息数据
+}
+const actions = initGlobalState(initialState)
+export default actions
+```
+```javascript
+// /src/App.vue 注册观察者函数监听数据变化
+actions.onGlobalStateChange((state, prevState) => {
+  // state: 变更后的状态; prevState: 变更前的状态
+  // 主应用观察者，建议通过 store 分发事件
+  this.appActions({ state, prevState })
+})
+```
+
+2. 子应用全局注册(/src/main.js)
+```javascript
+// 入口文件全局注册
+import actions from '@/plugins/shared/actions'
+Vue.prototype.$qiankunActions = actions
+```
+```javascript
+// 调用事件传递示例
+this.$qiankunActions.setGlobalState({msg: 'b/master/showDetail', data: {id: 'testBId', time: new Date()}})
+```
 
 #### 说明
 
