@@ -1,4 +1,4 @@
-# wqs-qiankun-demo qiankun 微前端解决方案 demo
+# qiankun 微前端解决方案 demo
 一个简单的 微前端 项目搭建的demo、包含通信、路由等
 
 #### 项目介绍
